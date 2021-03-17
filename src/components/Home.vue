@@ -1,16 +1,19 @@
 <template>
   <div class="container-fluid">
     <Header></Header>
+    <Body/>
   </div>
 </template>
 
 <script>
+import Body from './Body.vue'
+import Header from './Header.vue'
 
-import Header from './Header.component.vue'
 export default {
     name: "Home",
     components: {
-      Header
+      Header,
+      Body,
     }
 }
 </script>

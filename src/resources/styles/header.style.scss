@@ -1,4 +1,4 @@
-$fontsize-logo: 35px;
+@use '../common//common';
 
 .header {
     display: flex;
@@ -7,17 +7,17 @@ $fontsize-logo: 35px;
 }
 h1.logo{
     color: white;
-    background-color: #2264D1;
+    background-color: common.$color-main;
     padding: 5px 15px;;
     margin-bottom: 0px;
     margin-right: 10px;
 
-    font-size: $fontsize-logo;
+    font-size: common.$fontsize-logo;
     font-weight: bold;
     border-radius: 15%;
 }
 .name-shop{
-    font-size: $fontsize-logo;
+    font-size: common.$fontsize-logo;
 }
 input.form-control.me-2 {
     border-radius: 99px;
@@ -41,6 +41,6 @@ ul.navbar-nav.me-auto.mb-2.mb-lg-0 {
     align-items: center;
 }
 button.btn.btn-outline-primary {
-    font-size: 20px;
-    margin: 8px;
-}   
+        font-size: 20px;
+        margin: 8px;
+}
