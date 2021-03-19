@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Body from './Body.vue'
-import Header from './Header.vue'
+import Body from './Body/Body.vue'
+import Header from './Header/Header.vue'
 
 export default {
     name: "Home",
@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../resources/styles/home.style.scss";
+@import "@/resources/styles/home.style.scss";
 </style>

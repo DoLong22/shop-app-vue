@@ -11,6 +11,7 @@ button.btn-category{
     background-color: white;
     color: #787885;
     font-size: 14px;
+    width: max-content;
 }
     
 button.btn-category:hover{
@@ -22,7 +23,4 @@ button.btn-category:hover img.item-category{
     filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg) brightness(84%) contrast(94%);
 
 
-}
-.col{
-    padding: unset;
 }

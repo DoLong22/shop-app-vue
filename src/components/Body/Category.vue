@@ -84,5 +84,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../resources/styles/category.style.scss";
+@import "@/resources/styles/category.style.scss";
 </style>

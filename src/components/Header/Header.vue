@@ -58,5 +58,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../resources/styles/header.style.scss";
+@import "@/resources/styles/header.style.scss";
 </style>

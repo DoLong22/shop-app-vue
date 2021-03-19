@@ -1,0 +1,35 @@
+.card-body {
+  text-align: left;
+}
+.price {
+  font-size: 24px;
+  font-weight: bold;
+}
+.card-img-top {
+    height: 350px;
+}
+.card-body {
+    height: 250px;
+    position: relative;
+}
+.bottom-card-body{
+    display: flex;
+    position: absolute;
+    align-items: baseline;
+    justify-content: space-between;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0px 16px;
+}
+.bottom-card-body button.btn.btn-outline-primary{
+    margin: 0px;
+}
+ul.rate{
+    list-style-type: none;
+    display: inline;
+    padding: 0px;
+}
+ul.rate li{
+    display: inline;
+}
