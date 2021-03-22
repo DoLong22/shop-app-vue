@@ -1,13 +1,10 @@
 <template>
   <div class="content">
-    <div class="row">
-        <VueXItem/>
-      </div>
     <div>
       <SortItem @change="onChange($event)"></SortItem>
     </div>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-      <ItemView v-for="item in items" :key="item" :item="item" />
+      <ItemView v-for="item in currentItems" :key="item" :item="item" />
     </div>
   </div>
 </template>
@@ -17,24 +14,15 @@ import ItemServices from "@/services/product.service";
 import ImageService from "@/services/image.service";
 import ItemView from "../views/Item.View.vue";
 import SortItem from "../views/Sort.Item";
-import VueXItem from '../views/VueX.Item'
 
 export default {
-  components: { ItemView, SortItem,VueXItem },
+  components: { ItemView, SortItem },
   async created() {
     await this.fetchItems();
   },
   data() {
     return {
-      items: {
-        type: [],
-        default: () => [],
-      },
-      orginalItems: {
-        type: [],
-        default: () => [],
-      },
-      sortedItems: {
+      currentItems: {
         type: [],
         default: () => [],
       },
@@ -49,11 +37,12 @@ export default {
       response[1]?.data?.photos.map((data) => {
         listImage.push(data?.src?.medium);
       });
-      this.orginalItems = response[0]?.data.map((data, index) => {
+      this.currentItems = response[0]?.data.map((data, index) => {
         data.imageUrl = listImage[index];
         return data;
       });
-      this.items = this.orginalItems;
+      this.$store.commit("UPDATE_ITEMS", this.currentItems.slice());
+      console.log(this.$store.state.items);
     },
     sortByName(a, b) {
       const nameA = a.name.toUpperCase(); // bỏ qua hoa thường
@@ -70,17 +59,13 @@ export default {
     onChange(event) {
       const sortBy = event.target.value;
       if (sortBy === "Name") {
-        console.log(this.items);
-
-        this.items.sort(this.sortByName);
-        console.log(this.items);
-
-        return this.items;
+        this.currentItems.sort(this.sortByName);
+        return this.currentItems;
       } else if (sortBy === "Price") {
-        return this.items.sort((a, b) => a.price - b.price);
+        return this.currentItems.sort((a, b) => a.price - b.price);
       } else {
-        this.items = this.orginalItems.slice();
-        return this.items;
+        this.currentItems = this.$store.state.items.slice();
+        return this.currentItems;
       }
     },
   },
