@@ -1,5 +1,5 @@
 <template>
-  <button class="btn-category">
+  <button class="btn-category" :name="getLabel">
     <img class="item-category" :src="srcImage" alt="" />
     <p class="description-category">{{description}}</p>
   </button>
@@ -16,6 +16,10 @@ export default {
     desCategory:{
         type: String,
         default:()=>"",
+    },
+    label:{
+        type:String,
+        default: ()=>""
     }
   },
   computed: {
@@ -24,6 +28,9 @@ export default {
     },
     description(){
         return this.desCategory;
+    },
+    getLabel(){
+        return this.label
     }
   },
 };

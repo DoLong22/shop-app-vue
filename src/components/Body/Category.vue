@@ -1,8 +1,12 @@
 <template>
   <div class="category">
     <div class="row">
-      <div class="col" v-for="ca in categories" :key="ca">
-        <CategoryItem :imageUrl="ca.imageUrl" :desCategory="ca.desCategory" />
+      <div class="col" v-for="cate in categories" :key="cate" @click="onClick($event)">
+        <CategoryItem
+          :imageUrl="cate.imageUrl"
+          :desCategory="cate.desCategory"
+          :label="cate.label"
+        />
       </div>
     </div>
   </div>
@@ -19,55 +23,75 @@ export default {
         {
           imageUrl: "img/clothing.png",
           desCategory: "Clothing & Shoes",
+          label:"clothing",  
         },
         {
           imageUrl: "img/entertainment.png",
           desCategory: "Entertainment",
+          label:"entertainment",
         },
         {
           imageUrl: "img/music.png",
           desCategory: "Music",
+          label:"music",
         },
         {
           imageUrl: "img/sport.png",
           desCategory: "Sport",
+          label:"sport",
         },
         {
           imageUrl: "img/pets.png",
           desCategory: "Pets",
+          label:"pets",
         },
         {
           imageUrl: "img/kitchen.png",
           desCategory: "Kitchen Accessories",
+          label:"kitchen",
         },
         {
           imageUrl: "img/travel.png",
           desCategory: "Travel Equiqment",
+          label:"travel",
         },
         {
           imageUrl: "img/garden.png",
           desCategory: "Growing & Garden",
+          label:"garden",
         },
         {
           imageUrl: "img/electrical.png",
           desCategory: "Electrical Tools",
+          label:"electrical",
         },
         {
           imageUrl: "img/mother-care.png",
           desCategory: "Mother Care",
+          label:"mother care",
         },
         {
           imageUrl: "img/toy&enter.png",
           desCategory: "Toy & Entertainment",
+          label:"toy",
         },
         {
           imageUrl: "img/vintage.png",
           desCategory: "Vintage",
+          label:"vintage",
         },
       ],
     };
   },
+  methods:{
+    onClick(event){
+      const keySearch = event.target.name;
+      this.$store.commit('UPDATE_KEY_SEARCH',keySearch);
+      console.log(this.$store.state.keySearch)
+    }
+  }
 };
+
 </script>
 
 <style lang="scss">
