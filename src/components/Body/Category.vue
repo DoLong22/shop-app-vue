@@ -1,85 +1,72 @@
 <template>
   <div class="category">
     <div class="row">
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/clothing.png" alt="" />
-          <p class="description-category">Clothing & Shoes</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/entertainment.png" alt="" />
-          <p class="description-category">Entertainment</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/music.png" alt="" />
-          <p class="description-category">Music</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/sport.png" alt="" />
-          <p class="description-category">Sport & Lifestyle</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/pets.png" alt="" />
-          <p class="description-category">Pets</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/kitchen.png" alt="" />
-          <p class="description-category">Kitchen Accessories</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/travel.png" alt="" />
-          <p class="description-category">Travel Equiqment</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/garden.png" alt="" />
-          <p class="description-category">Growing & Garden</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/electrical.png" alt="" />
-          <p class="description-category">Electrical Tools</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/mother-care.png" alt="" />
-          <p class="description-category">Mother Care</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/toy&enter.png" alt="" />
-          <p class="description-category">Toy & Entertainment</p>
-        </button>
-      </div>
-      <div class="col">
-        <button class="btn-category">
-          <img class="item-category" src="img/vintage.png" alt="" />
-          <p class="description-category">Vintage</p>
-        </button>
+      <div class="col" v-for="ca in categories" :key="ca">
+        <CategoryItem :imageUrl="ca.imageUrl" :desCategory="ca.desCategory" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import CategoryItem from "../views/Category.Item";
 export default {
   name: "Category",
+  components: { CategoryItem },
+  data() {
+    return {
+      categories: [
+        {
+          imageUrl: "img/clothing.png",
+          desCategory: "Clothing & Shoes",
+        },
+        {
+          imageUrl: "img/entertainment.png",
+          desCategory: "Entertainment",
+        },
+        {
+          imageUrl: "img/music.png",
+          desCategory: "Music",
+        },
+        {
+          imageUrl: "img/sport.png",
+          desCategory: "Sport",
+        },
+        {
+          imageUrl: "img/pets.png",
+          desCategory: "Pets",
+        },
+        {
+          imageUrl: "img/kitchen.png",
+          desCategory: "Kitchen Accessories",
+        },
+        {
+          imageUrl: "img/travel.png",
+          desCategory: "Travel Equiqment",
+        },
+        {
+          imageUrl: "img/garden.png",
+          desCategory: "Growing & Garden",
+        },
+        {
+          imageUrl: "img/electrical.png",
+          desCategory: "Electrical Tools",
+        },
+        {
+          imageUrl: "img/mother-care.png",
+          desCategory: "Mother Care",
+        },
+        {
+          imageUrl: "img/toy&enter.png",
+          desCategory: "Toy & Entertainment",
+        },
+        {
+          imageUrl: "img/vintage.png",
+          desCategory: "Vintage",
+        },
+      ],
+    };
+  },
 };
 </script>
 

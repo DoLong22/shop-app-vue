@@ -1,11 +1,11 @@
 <template>
   <div class="col">
     <div class="card">
-      <img :src="item.imageUrl" class="card-img-top" alt="...">
+      <img :src="imageUrl" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{item.Title}}</h5>
-        <p class="price">${{item.price}}</p>
-        <p class="card-text">{{item.name}}</p>
+        <h5 class="card-title">{{name}}</h5>
+        <p class="price">${{price}}</p>
+        <p class="card-text">{{title}}</p>
         <div class="bottom-card-body">
             <ul class="rate">
                 <li><span>a</span></li>
@@ -25,13 +25,27 @@
 
 <script>
 export default {
-    name: "Item",
+    name: "ItemView",
     props:{
         item:{
             type: Object,
             default: () =>{}
         },
     },
+    computed:{
+      title(){
+        return this.item?.title || ""
+      },
+      price(){
+        return this.item?.price || ""
+      },
+      name(){
+        return this.item?.name || ""
+      },
+      imageUrl(){
+        return this.item?.imageUrl || ""
+      }
+    }
 }
 </script>
 
