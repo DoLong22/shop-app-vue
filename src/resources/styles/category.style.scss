@@ -1,45 +1,43 @@
 @use '../common//common';
-.category{
-    margin-top: 2em;
-}
-// .category.row.col{
-//     position: relative;
-// }
-// .category.row.col::before{
-//     content: "aa";
-//     position: absolute;
-//     z-index: 100;
-//     padding: 10px 35px;
-//     left: 0px;
-//     bottom: 0px;
-// }
-
-img.item-category{
-    filter: invert(48%) sepia(10%) saturate(346%) hue-rotate(201deg) brightness(97%) contrast(94%);
+.category {
+  margin-top: 2em;
 }
 
-button.btn-category{
-    background-color: white;
-    color: #787885;
-    font-size: 14px;
-    width: max-content;
-    position: relative;
+img.item-category {
+  filter: invert(48%) sepia(10%) saturate(346%) hue-rotate(201deg)
+    brightness(97%) contrast(94%);
 }
-button.btn-category::before{
-    content: "";
-    position: absolute;
-    z-index: 100;
-    padding: 25px 55px;
-    left: 0px;
-    bottom: 0px;
-}
-button.btn-category:hover{
-        background-color: common.$color-hover;
-        color:common.$color-main;
-}
-button.btn-category:hover img.item-category{
-    // filter: invert(99%) sepia(65%) saturate(3629%) hue-rotate(179deg) brightness(107%) contrast(106%);
-    filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg) brightness(84%) contrast(94%);
 
+button.btn-category {
+  background-color: white;
+  color: #787885;
+  font-size: 14px;
+  width: max-content;
+  position: relative;
+}
+button.btn-category::before {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  padding: 25px 55px;
+  left: 0px;
+  bottom: 0px;
+}
+button.btn-category:hover {
+  background-color: common.$color-hover;
+  color: common.$color-main;
+}
 
+button.btn-category:hover img.item-category {
+  filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg)
+    brightness(84%) contrast(94%);
+}
+
+button.clicked {
+    background-color: common.$color-hover;
+    color: common.$color-main;
+  }
+img.clicked{
+    filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg)
+    brightness(84%) contrast(94%);
 }

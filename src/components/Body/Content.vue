@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <Loading v-if="loading"/>
     <div>
       <SortItem @change="onChange($event)"></SortItem>
     </div>
@@ -14,10 +15,10 @@ import ItemServices from "@/services/product.service";
 import ImageService from "@/services/image.service";
 import ItemView from "../views/Item.View.vue";
 import SortItem from "../views/Sort.Item";
-// import { watch } from '@vue/runtime-core';
+import Loading from "../views/Loading.View";
 
 export default {
-  components: { ItemView, SortItem },
+  components: { ItemView, SortItem, Loading },
   async created() {
     await this.fetchItems("GET_ALL");
   },
@@ -42,7 +43,6 @@ export default {
   },
   watch: {
     topic: async function() {
-      console.log(this.$store.sate?.topic);
       await this.fetchItems("SEARCH", this.topic);
       return this.currentItems;
     },
@@ -54,12 +54,11 @@ export default {
         let images;
         const items = ItemServices.getItems();
         if (doWhat === "GET_ALL") {
-          console.log("get all");
           images = ImageService.getImages();
         } else {
-          console.log("search");
           images = ImageService.searchImages(query);
         }
+        this.loading = true;
         const response = await Promise.all([items, images]);
         response[1]?.data?.photos.map((data) => {
           listImage.push(data?.src?.medium);
@@ -69,6 +68,7 @@ export default {
           return data;
         });
         this.$store.commit("UPDATE_ITEMS", this.currentItems.slice());
+        this.loading = false;
       } catch (error) {
         console.log(error);
       }
