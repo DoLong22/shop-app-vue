@@ -1,4 +1,5 @@
 <template>
+  <div class="sort-by">
     <select
       v-model="value"
       class="form-select form-select-sm"
@@ -12,6 +13,7 @@
         :label="item.label"
       ></option>
     </select>
+  </div>
 </template>
 
 <script>

@@ -34,10 +34,24 @@ button.btn-category:hover img.item-category {
 }
 
 button.clicked {
-    background-color: common.$color-hover;
-    color: common.$color-main;
-  }
-img.clicked{
-    filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg)
+  background-color: common.$color-hover;
+  color: common.$color-main;
+}
+img.clicked {
+  filter: invert(35%) sepia(79%) saturate(2993%) hue-rotate(207deg)
     brightness(84%) contrast(94%);
 }
+.sort-by {
+  width: 20%;
+  margin: 20px 0px;
+  position: relative;
+}
+.sort-by::before{
+  content: "Sort by";
+    position: absolute;
+    z-index: 100;
+    left: 10px;
+    bottom: 22px;
+    background-color: white;
+}
+optgroup { font-size:40px; }
