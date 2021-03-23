@@ -13,7 +13,7 @@ export default {
             },
         });
     },
-    searchImages(per_page=35,query){
+    searchImages(query,per_page=35){
         return imageApi.get('/search',{
             params: {
                 per_page,

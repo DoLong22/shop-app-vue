@@ -63,7 +63,7 @@ export default {
         {
           imageUrl: "img/electrical.png",
           desCategory: "Electrical Tools",
-          label:"electrical",
+          label:"electric",
         },
         {
           imageUrl: "img/mother-care.png",
@@ -85,9 +85,9 @@ export default {
   },
   methods:{
     onClick(event){
-      const keySearch = event.target.name;
-      this.$store.commit('UPDATE_KEY_SEARCH',keySearch);
-      console.log(this.$store.state.keySearch)
+      const topic = event.target.name;
+      this.$store.commit('UPDATE_KEY_SEARCH',topic);
+      console.log(this.$store.state.topic)
     }
   }
 };
