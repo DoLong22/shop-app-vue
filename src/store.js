@@ -7,6 +7,7 @@ const state = {
     filterBy: '',
     filterValue: '',
   },
+  currentPage: 1,
 };
 
 const mutations = {
@@ -19,17 +20,26 @@ const mutations = {
   SET_FILTER(state, filter) {
     state.filter = filter;
   },
+  SET_CURRENT_PAGE(state, page) {
+    state.currentPage = page;
+  },
 };
 
 const actions = {
   setFilter({ commit }, filter) {
     commit('SET_FILTER', filter);
   },
+  setCurrentPage({ commit }, page) {
+    commit('SET_CURRENT_PAGE', page);
+  },
 };
 
 const getters = {
   getFilter(state) {
     return state.filter;
+  },
+  getCurrentPage(state) {
+    return state.currentPage;
   },
 };
 

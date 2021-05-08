@@ -5,8 +5,9 @@
       <SortItem @change="onChange($event)"></SortItem>
     </div>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-      <ItemView v-for="item in currentItems" :key="item" :item="item" />
+      <ItemView v-for="item in paginationItems" :key="item" :item="item" />
     </div>
+    <PagingView :totalItem="currentItems.length" />
   </div>
 </template>
 
@@ -16,9 +17,11 @@ import ImageService from "@/services/image.service";
 import ItemView from "../views/Item.View.vue";
 import SortItem from "../views/Sort.Item";
 import Loading from "../views/Loading.View";
+import PagingView from "../views/Paging.View.vue";
+
 import { mapGetters } from "vuex";
 export default {
-  components: { ItemView, SortItem, Loading },
+  components: { PagingView, ItemView, SortItem, Loading },
   async created() {
     await this.fetchItems("GET_ALL");
   },
@@ -29,9 +32,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getFilter"]),
+    ...mapGetters(["getFilter", "getCurrentPage"]),
     topic: function () {
       return this.$store.state.topic;
+    },
+    paginationItems() {
+      const start = (this.getCurrentPage - 1) * 12;
+      const end = start + 12;
+      return this.currentItems.slice(start, end);
     },
   },
   watch: {
@@ -41,7 +49,7 @@ export default {
     },
     getFilter: function () {
       const { filterValue, filterBy } = this.getFilter;
-      console.log(filterValue + filterBy);
+      console.log(`${filterValue} ${filterBy}`);
       switch (filterBy) {
         case "price":
           this.filterByPrice(filterValue);
@@ -105,22 +113,22 @@ export default {
       switch (price) {
         case "1":
           this.currentItems = this.$store.state.items.filter(
-            (item) => item.price > 1000 && item.price <= 15000
+            (item) => item.price > 1000 && item.price <= 25000
           );
           break;
         case "2":
           this.currentItems = this.$store.state.items.filter(
-            (item) => item.price > 15000 && item.price <= 30000
+            (item) => item.price > 25000 && item.price <= 45000
           );
           break;
         case "3":
           this.currentItems = this.$store.state.items.filter(
-            (item) => item.price > 30000 && item.price <= 45000
+            (item) => item.price > 45000 && item.price <= 65000
           );
           break;
         case "4":
           this.currentItems = this.$store.state.items.filter(
-            (item) => item.price > 45000
+            (item) => item.price > 65000
           );
           break;
         default:

@@ -6,14 +6,14 @@ const imageApi = axios.create({
     }
 })
 export default {
-    getImages(per_page=35) {
+    getImages(per_page=80) {
         return imageApi.get('/curated',{
             params: {
                 per_page
             },
         });
     },
-    searchImages(query,per_page=35){
+    searchImages(query,per_page=80){
         return imageApi.get('/search',{
             params: {
                 per_page,

@@ -27,7 +27,7 @@ export default {
     Category,
     NavbarSide,
     Content,
-  }
+  },
 };
 </script>
 <style lang="scss">
